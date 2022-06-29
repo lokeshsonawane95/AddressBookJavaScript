@@ -84,15 +84,32 @@ class AddressBook{
     }
 
     toString(){
-        return "First Name : " + this.firstName + "\nLast Name : " + this.lastName + "\nAddress : " + this.address +
-         "\nCity " + this.city + "\nState : " + this.state + "\nZip : " + this.zip + "\nPhone Number : " + this.phoneNumber + 
-         "\nemail : " + this.email
+        return "\nFirst Name : " + this.firstName + "\nLast Name : " + this.lastName + "\nAddress : " + this.address +
+         "\nCity : " + this.city + "\nState : " + this.state + "\nZip : " + this.zip + "\nPhone Number : " + this.phoneNumber + 
+         "\nemail : " + this.email + "\n"
     }
 }
-try{
-    let addressBook = new AddressBook("Lokesh", "Sonawane", "Warje", "Pune", "Maharashtra", 411058, 9876543210, "lokesh.sonawane@gmail.com")
-    console.log(addressBook.toString())
+let addressBookArray = new Array()
+prompt = require('readline-sync')
+while(true){
+    try{
+        let stop = prompt.question("Press 0 to stop inserting\nPress other key to start inserting : ")
+        if(stop == 0)
+            break
+        let firstName = prompt.question("Enter first name : ")
+        let lastName = prompt.question("Enter last name : ")
+        let address = prompt.question("Enter address : ")
+        let city = prompt.question("Enter city : ")
+        let state = prompt.question("Enter state : ")
+        let zip = prompt.question("Enter zip : ")
+        let phoneNumber = prompt.question("Enter phoneNumber : ")
+        let email = prompt.question("Enter email : ")
+        let addressBook = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber, email)
+        addressBookArray.push(addressBook)
+    }
+    catch(e){
+        console.error(e)
+        console.log("Press Enter to stop")  
+    }
 }
-catch(e){
-    console.error(e)
-}
+addressBookArray.forEach(contact => console.log(contact.toString()))
