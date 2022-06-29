@@ -144,11 +144,17 @@ try{
     let countContacts = addressBookArray.reduce((count, contact) => count += 1, 0)
     console.log("Total contacts present in Address Book : " + countContacts)
 
-    //UC8 search contact by City and state
-    console.log("Adding 1 contact agina")
+    //UC8 search contact by city or state
+    //Adding 1 contact agin
+    console.log("Persons in city Mumbai or state Maharashtra are")
     addressBookArray.push(new AddressBook("Lokesh", "Sonawane", "Warje", "Pune", "Maharashtra", 411058, 9876543210, "lokesh.sonawane@gmail.com"))
+    addressBookArray.filter(contact => contact.city == "Mumbai" || contact.state == "Maharashtra").forEach(contact => console.log(contact.firstName))
+    console.log("\n")
+    
+    //UC9 view contact by City and state
     console.log("Contact details by city Mumbai or state Maharashtra")
     addressBookArray.filter(contact => contact.city == "Mumbai" || contact.state == "Maharashtra").forEach(contact => console.log(contact.toString()))
+    console.log("\n")
 }
 catch(e){
     console.error(e)
