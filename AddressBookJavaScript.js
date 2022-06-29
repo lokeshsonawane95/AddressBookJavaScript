@@ -93,8 +93,8 @@ let addressBookArray = new Array()
 prompt = require('readline-sync')
 while(true){
     try{
-        let stop = prompt.question("Press 0 to stop inserting\nPress other key to start inserting : ")
-        if(stop == 0)
+        let stop = prompt.question("Press enter to stop inserting and see the contacts\nEnter other value to start inserting : ")
+        if(stop == "")
             break
         let firstName = prompt.question("Enter first name : ")
         let lastName = prompt.question("Enter last name : ")
@@ -112,4 +112,17 @@ while(true){
         console.log("Press Enter to stop")  
     }
 }
-addressBookArray.forEach(contact => console.log(contact.toString()))
+try{
+    addressBookArray.push(new AddressBook("Lokesh", "Sonawane", "Warje", "Pune", "Maharashtra", 411058, 9876543210, "lokesh.sonawane@gmail.com"))
+    addressBookArray.push(new AddressBook("Mohak", "Mangal", "Hennur", "Bengaluru", "Karnataka", 415263, 9630258741, "mohak.mangal@gmail.com"))
+    addressBookArray.push(new AddressBook("John", "Connor", "Andheri", "Mumbai", "Maharashtra", 400006, 9512036478, "john.connor@gmail.com"))
+    console.log("Contact details are")
+    addressBookArray.forEach(contact => console.log(contact.toString()))
+
+    console.log("Edited contact details are")
+    addressBookArray.filter(contact => contact.firstName == "Lokesh").forEach(contact => contact.city = "Mumbai")
+    addressBookArray.forEach(contact => console.log(contact.toString()))
+}
+catch(e){
+    console.error(e)
+}
