@@ -109,6 +109,7 @@ while(true){
         let email = prompt.question("Enter email : ")
         let addressBook = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber, email)
         
+        //UC7
         if(addressBookArray.find(contact => contact.firstName == addressBook.firstName && contact.lastName == addressBook.lastName)){
             throw "Same person already exists"
         }
@@ -138,9 +139,16 @@ try{
     }
     addressBookArray.forEach(contact => console.log(contact.toString()))
 
+    //UC6
     //counting by reduce method         reduce((previousValue, currentValue) => ,initialValue)
     let countContacts = addressBookArray.reduce((count, contact) => count += 1, 0)
     console.log("Total contacts present in Address Book : " + countContacts)
+
+    //UC8 search contact by City and state
+    console.log("Adding 1 contact agina")
+    addressBookArray.push(new AddressBook("Lokesh", "Sonawane", "Warje", "Pune", "Maharashtra", 411058, 9876543210, "lokesh.sonawane@gmail.com"))
+    console.log("Contact details by city Mumbai or state Maharashtra")
+    addressBookArray.filter(contact => contact.city == "Mumbai" || contact.state == "Maharashtra").forEach(contact => console.log(contact.toString()))
 }
 catch(e){
     console.error(e)
