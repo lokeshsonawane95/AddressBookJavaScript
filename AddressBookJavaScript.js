@@ -91,6 +91,9 @@ class AddressBook{
 }
 let addressBookArray = new Array()
 prompt = require('readline-sync')
+addressBookArray.push(new AddressBook("Lokesh", "Sonawane", "Warje", "Pune", "Maharashtra", 411058, 9876543210, "lokesh.sonawane@gmail.com"))
+addressBookArray.push(new AddressBook("Mohak", "Mangal", "Hennur", "Bengaluru", "Karnataka", 415263, 9630258741, "mohak.mangal@gmail.com"))
+addressBookArray.push(new AddressBook("John", "Connor", "Andheri", "Mumbai", "Maharashtra", 400006, 9512036478, "john.connor@gmail.com"))
 while(true){
     try{
         let stop = prompt.question("Press enter to stop inserting and see the contacts\nEnter other value to start inserting : ")
@@ -105,7 +108,12 @@ while(true){
         let phoneNumber = prompt.question("Enter phoneNumber : ")
         let email = prompt.question("Enter email : ")
         let addressBook = new AddressBook(firstName, lastName, address, city, state, zip, phoneNumber, email)
-        addressBookArray.push(addressBook)
+        
+        if(addressBookArray.find(contact => contact.firstName == addressBook.firstName && contact.lastName == addressBook.lastName)){
+            throw "Same person already exists"
+        }
+        else
+            addressBookArray.push(addressBook)
     }
     catch(e){
         console.error(e)
@@ -113,9 +121,9 @@ while(true){
     }
 }
 try{
-    addressBookArray.push(new AddressBook("Lokesh", "Sonawane", "Warje", "Pune", "Maharashtra", 411058, 9876543210, "lokesh.sonawane@gmail.com"))
-    addressBookArray.push(new AddressBook("Mohak", "Mangal", "Hennur", "Bengaluru", "Karnataka", 415263, 9630258741, "mohak.mangal@gmail.com"))
-    addressBookArray.push(new AddressBook("John", "Connor", "Andheri", "Mumbai", "Maharashtra", 400006, 9512036478, "john.connor@gmail.com"))
+    // addressBookArray.push(new AddressBook("Lokesh", "Sonawane", "Warje", "Pune", "Maharashtra", 411058, 9876543210, "lokesh.sonawane@gmail.com"))
+    // addressBookArray.push(new AddressBook("Mohak", "Mangal", "Hennur", "Bengaluru", "Karnataka", 415263, 9630258741, "mohak.mangal@gmail.com"))
+    // addressBookArray.push(new AddressBook("John", "Connor", "Andheri", "Mumbai", "Maharashtra", 400006, 9512036478, "john.connor@gmail.com"))
     console.log("Contact details are")
     addressBookArray.forEach(contact => console.log(contact.toString()))
 
