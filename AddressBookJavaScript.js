@@ -129,6 +129,10 @@ try{
             addressBookArray.splice(contact, 1)
     }
     addressBookArray.forEach(contact => console.log(contact.toString()))
+
+    //counting by reduce method         reduce((previousValue, currentValue) => ,initialValue)
+    let countContacts = addressBookArray.reduce((count, contact) => count += 1, 0)
+    console.log("Total contacts present in Address Book : " + countContacts)
 }
 catch(e){
     console.error(e)
