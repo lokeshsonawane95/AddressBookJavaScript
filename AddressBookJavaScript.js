@@ -171,6 +171,19 @@ try{
     for(let person of names){
         addressBookArray.filter(contact => person == (contact.firstName + " " + contact.lastName)).forEach(contact => console.log(contact.toString()))
     }
+
+    //UC12 sort by city
+    console.log("\nContacts sorted by city are")
+    let cityArray = new Array()
+    addressBookArray.forEach(contact => {
+        if(!(cityArray == contact.city)){
+            cityArray.push(contact.city)
+        }
+    })
+    cityArray.sort()
+    for(let person of cityArray){
+        addressBookArray.filter(contact => person == contact.city).forEach(contact => console.log(contact.toString()))
+    }
 }
 catch(e){
     console.error(e)
