@@ -84,9 +84,9 @@ class AddressBook{
     }
 
     toString(){
-        return "\nFirst Name : " + this.firstName + "\nLast Name : " + this.lastName + "\nAddress : " + this.address +
-         "\nCity : " + this.city + "\nState : " + this.state + "\nZip : " + this.zip + "\nPhone Number : " + this.phoneNumber + 
-         "\nemail : " + this.email + "\n"
+        return "First Name : " + this.firstName + ", Last Name : " + this.lastName + ", Address : " + this.address +
+         ", City : " + this.city + ", State : " + this.state + ", Zip : " + this.zip + ", Phone Number : " + this.phoneNumber + 
+         ", email : " + this.email + "\n"
     }
 }
 let addressBookArray = new Array()
@@ -119,8 +119,15 @@ try{
     console.log("Contact details are")
     addressBookArray.forEach(contact => console.log(contact.toString()))
 
-    console.log("Edited contact details are")
+    console.log("After editing, contact details are")
     addressBookArray.filter(contact => contact.firstName == "Lokesh").forEach(contact => contact.city = "Mumbai")
+    addressBookArray.forEach(contact => console.log(contact.toString()))
+
+    console.log("After deleting contact details with firestname = Lokesh the remaining contact details are")
+    for(let contact = 0; contact < addressBookArray.length; contact++){
+        if(addressBookArray[contact].firstName == "Lokesh")
+            addressBookArray.splice(contact, 1)
+    }
     addressBookArray.forEach(contact => console.log(contact.toString()))
 }
 catch(e){
