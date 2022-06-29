@@ -158,6 +158,19 @@ try{
     //UC10 count contacts
     let countContactByCityOrState = addressBookArray.filter(contact => contact.city == "Mumbai" || contact.state == "Maharashtra").reduce((count, contact) => count += 1, 0)
     console.log("Count of contact details by city Mumbai or state Maharashtra is : " + countContactByCityOrState)
+
+    //UC11 sort by names
+    console.log("\nContact persons sorted alphabetically are")
+    let names = new Array()
+    addressBookArray.forEach(contact =>{
+        if(!(names == contact.firstName && names == contact.lastName)){
+            names.push(contact.firstName + " " + contact.lastName)
+        }
+    })
+    names.sort()
+    for(let person of names){
+        addressBookArray.filter(contact => person == (contact.firstName + " " + contact.lastName)).forEach(contact => console.log(contact.toString()))
+    }
 }
 catch(e){
     console.error(e)
