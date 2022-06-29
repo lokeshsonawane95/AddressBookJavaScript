@@ -154,7 +154,10 @@ try{
     //UC9 view contact by City and state
     console.log("Contact details by city Mumbai or state Maharashtra")
     addressBookArray.filter(contact => contact.city == "Mumbai" || contact.state == "Maharashtra").forEach(contact => console.log(contact.toString()))
-    console.log("\n")
+
+    //UC10 count contacts
+    let countContactByCityOrState = addressBookArray.filter(contact => contact.city == "Mumbai" || contact.state == "Maharashtra").reduce((count, contact) => count += 1, 0)
+    console.log("Count of contact details by city Mumbai or state Maharashtra is : " + countContactByCityOrState)
 }
 catch(e){
     console.error(e)
